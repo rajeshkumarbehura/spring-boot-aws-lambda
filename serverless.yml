@@ -1,0 +1,25 @@
+service: tmachine-mobile-proxy
+
+frameworkVersion: ">=1.2.0 <=2.29.0"
+
+provider:
+  name: aws
+  runtime: java8
+  stage: tmachine
+  region: ap-southeast-1
+  memorySize: 1024
+  timeout: 20
+  deploymentBucket:
+    name: deploy-lambda-jars-bucket
+
+package:
+  artifact: tmachine-lambda-proxy-final.jar
+
+functions:
+  TmachineHandler:
+    handler: com.syn.tmproxy.TmProxyMainHandler
+    name: tmachine-handler
+    runtime: java8
+    description: TmProxyMainHandler Normal or Blank Clips From SQS
+    events:
+      - http: ANY {proxy+}
