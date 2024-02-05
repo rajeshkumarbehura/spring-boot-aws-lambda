@@ -1,25 +1,28 @@
-service: tmachine-mobile-proxy
+service: spring-boot-aws-lambda
 
-frameworkVersion: ">=1.2.0 <=2.29.0"
+frameworkVersion: "3.38.0"
 
 provider:
   name: aws
-  runtime: java8
-  stage: tmachine
+  # update required Java Version
+  runtime: java17
+  stage: dev
   region: ap-southeast-1
+  # update required memory for lambda upto 10GB
   memorySize: 1024
   timeout: 20
+  # define your S3 bucket for serverless code to be store
   deploymentBucket:
-    name: deploy-lambda-jars-bucket
+    name: dev-seller-lambda-code
 
 package:
-  artifact: tmachine-lambda-proxy-final.jar
+  artifact: target/spring-boot-aws-lambda-1.0.jar
 
 functions:
-  TmachineHandler:
-    handler: com.syn.tmproxy.TmProxyMainHandler
-    name: tmachine-handler
-    runtime: java8
-    description: TmProxyMainHandler Normal or Blank Clips From SQS
+  SpringBootApiHandler:
+    handler: com.rkb.aws.handler.LambdaHandler
+    name: spring-boot-aws-lambda
+    runtime: java17
+    description: Spring Boot API & Lambda deploy
     events:
       - http: ANY {proxy+}
