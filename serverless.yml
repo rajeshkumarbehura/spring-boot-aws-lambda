@@ -8,9 +8,10 @@ provider:
   runtime: java17
   stage: dev
   region: ap-southeast-1
-  # update required memory upto 10GB
+  # update required memory for lambda upto 10GB
   memorySize: 1024
   timeout: 20
+  # define your S3 bucket for serverless code to be store
   deploymentBucket:
     name: dev-seller-lambda-code
 
