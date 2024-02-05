@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.rkb</groupId>
     <artifactId>spring-boot-aws-lambda</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <name>spring-boot-aws-lambda</name>
     <description>spring-boot-aws-lambda</description>
 
@@ -15,6 +15,14 @@
         <version>2.7.11</version>
         <relativePath/>
     </parent>
+
+    <properties>
+        <java.version>17</java.version>
+        <aws-serverless-java-container-springboot2.version>1.9.1</aws-serverless-java-container-springboot2.version>
+        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
+        <maven.compiler.source.version>11</maven.compiler.source.version>
+        <maven.compiler.target.version>11</maven.compiler.target.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -72,11 +80,6 @@
         </plugins>
     </build>
 
-    <properties>
-        <aws-serverless-java-container-springboot2.version>1.9.1</aws-serverless-java-container-springboot2.version>
-        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
-        <maven.compiler.source.version>17</maven.compiler.source.version>
-        <maven.compiler.target.version>17</maven.compiler.target.version>
-    </properties>
+
 
 </project>
